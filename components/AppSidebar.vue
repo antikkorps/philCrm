@@ -5,44 +5,42 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarHeader,
-} from '@/components/ui/sidebar'
+} from "@/components/ui/sidebar"
 import { Home, Settings } from "lucide-vue-next"
-import { ROUTES } from '~/configs/routes';
-import { useRoute } from 'vue-router'
+import { useRoute } from "vue-router"
+import { ROUTES } from "~/configs/routes"
 
 const route = useRoute()
 const items = [
   {
-    title: "Home",
+    title: "Tableau de bord",
     url: ROUTES.dashboard.index,
     icon: Home,
   },
   {
-    title: "Settings",
+    title: "Paramètres",
     url: ROUTES.dashboard.settings,
     icon: Settings,
   },
-];
-
-
+]
 </script>
 
 <template>
   <Sidebar variant="floating">
     <SidebarHeader />
-   <SidebarContent>
+    <SidebarContent>
       <SidebarGroup>
         <SidebarGroupLabel>Application</SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
-              <SidebarMenuItem v-for="item in items" :key="item.title">
-                <SidebarMenuButton asChild :isActive="item.url === route.path">
-                    <a :href="item.url">
-                      <component :is="item.icon" />
-                      <span>{{item.title}}</span>
-                    </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+            <SidebarMenuItem v-for="item in items" :key="item.title">
+              <SidebarMenuButton as-child :is-active="item.url === route.path">
+                <a :href="item.url">
+                  <component :is="item.icon" />
+                  <span>{{ item.title }}</span>
+                </a>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>

@@ -1,24 +1,25 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from "@tailwindcss/vite"
 export default defineNuxtConfig({
-  compatibilityDate: '2025-05-15',
+  compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
-  css: ['~/assets/css/main.css'],
+  css: ["~/assets/css/main.css"],
   modules: [
-    '@nuxt/eslint',
-    '@nuxt/fonts',
-    '@nuxt/icon',
-    '@nuxt/image',
-    '@nuxt/test-utils',
-    '@nuxt/ui',
-    '@nuxtjs/tailwindcss',
-    'shadcn-nuxt'
+    "@nuxt/eslint",
+    "@nuxt/fonts",
+    "@nuxt/icon",
+    "@nuxt/image",
+    "@nuxt/test-utils",
+    "@nuxt/ui",
+    "@nuxtjs/tailwindcss",
+    "shadcn-nuxt",
+    "@pinia/nuxt",
   ],
   shadcn: {
-    prefix: '',
-    componentDir: './components/ui'
-  }
+    prefix: "",
+    componentDir: "./components/ui",
+  },
 })
