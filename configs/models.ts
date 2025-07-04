@@ -1,7 +1,14 @@
+import { CrudActionsEnums } from '~/enums/actions';
+
 export default {
   users: {
-    list: () => import('@/components/models/users/UserList.vue'),
-    create: () => import('@/components/models/users/UserCreateForm.vue'),
-    edit: () => import('@/components/models/users/UserEditForm.vue'),
+    // [CrudActionsEnums.Create]: () => import('@/components/models/users/UserForm.vue'),
+    // [CrudActionsEnums.Edit]: () => import('@/components/models/users/UserForm.vue'),
+    // [CrudActionsEnums.Show]: () => import('@/components/models/users/UserForm.vue'),
   },
+  companies: {
+    [CrudActionsEnums.Create]: () => import('@/components/models/companies/CompanyForm.vue'),
+    [CrudActionsEnums.Edit]: () => import('@/components/models/companies/CompanyForm.vue'),
+    [CrudActionsEnums.Show]: () => import('@/components/models/companies/CompanyForm.vue'),
+  }
 } 

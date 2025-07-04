@@ -11,6 +11,7 @@ const props = defineProps<{
     required?: boolean
     setCharCount?: (count: number) => void
     group?: PhilInputProps['group']
+    charCount?: number
 }>()
 
 
@@ -56,8 +57,12 @@ const inputBaseTypesSupported: InputType[] = [
         :step="field.inputType === inputTypes.number ? field.number?.step || 1 : undefined" v-model="modelValue"
         :required="required" :readonly="field.inputType === inputTypes.hidden" @input="onInput" />
 
-    <Select v-else-if="field.inputType === inputTypes.select" v-model="modelValue">
-        <SelectTrigger :class="cn('w-full', group?.error && 'border-red-500')">
+    <Select 
+    
+    v-else-if="field.inputType === inputTypes.select" v-model="modelValue">
+        <SelectTrigger 
+        :disabled="field.disabled"
+        :class="cn('w-full mt-2', group?.error && 'border-red-500')">
             <SelectValue :placeholder="field.placeholder || 'Sélectionner...'" />
         </SelectTrigger>
         <SelectContent>

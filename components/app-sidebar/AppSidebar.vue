@@ -5,7 +5,7 @@ import {
   SidebarFooter,
   SidebarHeader,
 } from '@/components/ui/sidebar'
-import { Home, Settings, Users } from "lucide-vue-next"
+import { Building, Home, Settings, Users } from "lucide-vue-next"
 import { ROUTES } from '~/configs/routes';
 import SidebarSingles from '@/components/app-sidebar/SidebarSingles.vue';
 import SidebarCollapsibles from '@/components/app-sidebar/SidebarCollapsibles.vue';
@@ -45,6 +45,24 @@ const items = {
           isVisible: true
         },  
       ],
+    }, {
+      title: "Company",
+      url: "#",
+      icon: Building,
+      isActive: route.path.startsWith(ROUTES.dashboard.companies.index),
+      isVisible: true,
+      items: [
+        {
+          title: "Liste",
+          url: ROUTES.dashboard.companies.index,
+          isVisible: true
+        },
+        {
+          title: "Créer",
+          url: ROUTES.dashboard.companies.create,
+          isVisible: true
+        }
+      ]
     }
   ]
 };

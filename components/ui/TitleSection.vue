@@ -18,8 +18,8 @@
 
 <script setup lang="ts">
 import { ArrowLeft, Plus } from 'lucide-vue-next';
-import { isCrudEntry, ROUTES } from '~/configs/routes';
 import { CrudActionsEnums, GlobalActionsEnums } from '~/enums/actions';
+import { getDashboardIndex, getDashboardCreate } from '~/utils/dashboardModelRoutes';
 
 const props = defineProps<{
     title: string;
@@ -30,29 +30,10 @@ const props = defineProps<{
 
 const route = useRoute()
 const modelParam = route.params.model as string
-const isValidModel = (key: string): key is keyof typeof ROUTES.dashboard =>
-    key in ROUTES.dashboard;
 
-const model = computed(() => {
-    return isValidModel(modelParam) ? modelParam : null
-})
-const dashboardEntry = computed(() => {
-    return model.value ? ROUTES.dashboard[model.value] : null
-})
-const backHref = computed(() => {
-    if (dashboardEntry.value && isCrudEntry(dashboardEntry.value)) {
-        return dashboardEntry.value.index
-    } else if (typeof dashboardEntry.value === 'string') {
-        return dashboardEntry.value
-    }
-    return '/'
-})
 
-const createHref = computed(() => {
-    if (dashboardEntry.value && isCrudEntry(dashboardEntry.value)) {
-        return dashboardEntry.value.create
-    }
-    return ''
-})
+const backHref = computed(() => getDashboardIndex(modelParam))
+
+const createHref = computed(() => getDashboardCreate(modelParam))
 
 </script>

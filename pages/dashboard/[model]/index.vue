@@ -10,30 +10,99 @@ const route = useRoute()
 const model = route.params.model as string
 
 const columns = ref([])
-const data = ref([])
-
+const data = ref<Company[]>([])
+const pagination = ref<PaginationType>()
 const actions = [
   CrudActionsEnums.Create
 ]
+import { apiFetch } from '~/utils/api';
+import type { Company, CompanyResource } from '~/types/company'
+import type { PaginationType } from '~/types/pagination'
+import FiltersMenu from '~/components/models/table/Filters/FiltersMenu.vue'
+
+// Fonction pour récupérer les données
+const fetchData = async (page: number = 1, searchParams?: Record<string, string>) => {
+  try {
+    let url = `/api/${model}?page=${page}&limit=10`
+
+    // Ajouter tous les paramètres de recherche
+    if (searchParams) {
+      Object.entries(searchParams).forEach(([key, value]) => {
+        if (value && value.trim()) {
+          url += `&${key}=${encodeURIComponent(value.trim())}`
+        }
+      })
+    }
+
+    const dataResources: CompanyResource = await apiFetch(url)
+    data.value = dataResources.items;
+    console.log(url)
+    console.log(data.value)
+    pagination.value = dataResources.pagination;
+    console.log(pagination.value)
+  } catch (e) {
+    console.error('Erreur lors du fetch du model:', e)
+  }
+}
+
+// Fonction pour extraire les paramètres de recherche depuis l'URL
+const getSearchParams = () => {
+  const searchParams: Record<string, string> = {}
+  Object.entries(route.query).forEach(([key, value]) => {
+    // Exclure les paramètres spéciaux comme 'page'
+    if (key !== 'page' && value && typeof value === 'string' && value.trim() !== '') {
+      searchParams[key] = value
+    }
+  })
+  return searchParams
+}
+
+// Gérer le changement de page
+const handlePageChange = async (page: number) => {
+  const searchParams = getSearchParams()
+  await fetchData(page, searchParams)
+}
+
+// Écouter les changements de page dans l'URL
+watch(() => route.query.page, async (newPage) => {
+  if (newPage && typeof newPage === 'string') {
+    const pageNumber = parseInt(newPage)
+    if (pageNumber && pageNumber > 0) {
+      const searchParams = getSearchParams()
+      await fetchData(pageNumber, searchParams)
+    }
+  }
+})
+
+// Écouter les changements de recherche dans l'URL
+watch(() => route.query, async () => {
+  const page = parseInt(route.query.page as string) || 1
+  const searchParams = getSearchParams()
+  await fetchData(page, searchParams)
+}, { deep: true })
+
 onMounted(async () => {
-  columns.value = await resolveColumns(model);
-  // faire un fetch API générique ici :
-  // data.value = await $fetch(`/api/${model}`)
-  data.value = [
-  {
-      id: '728ed52f',
-      amount: 100,
-      status: 'pending',
-      email: 'm@example.com',
-    },
-    // ...
-  ]
+  const [columnsData] = await Promise.all([
+    resolveColumns(model),
+    (async () => {
+      const pageFromUrl = parseInt(route.query.page as string) || 1
+      const searchParams = getSearchParams()
+      await fetchData(pageFromUrl, searchParams)
+    })()
+  ])
+
+  columns.value = columnsData
 })
 </script>
 
 <template>
   <TitleSection :title="'List of ' + model" :actions="actions" />
-  <div class=" py-10">
-    <DataTable :columns="columns" :data="data" />
+
+  <div class=" py-10 space-y-5">
+    <div className="w-full flex justify-end">
+      <FiltersMenu :model="model" />
+    </div>
+    <DataTable v-if="pagination" :columns="columns" :data="data" :pagination="pagination"
+      @pageChange="handlePageChange" />
   </div>
-</template> 
+</template>

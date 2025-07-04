@@ -1,3 +1,5 @@
+import { CrudActionsEnums } from "~/enums/actions"
+
 const DASHBOARD_BASE = "/dashboard"
 const CRUD = {
     index: "",
@@ -15,12 +17,69 @@ export const ROUTES = {
         index: DASHBOARD_BASE,
         settings: `${DASHBOARD_BASE}/settings`,
         users: {
-            index: `${DASHBOARD_BASE}/users/${CRUD.index}`,
-            create: `${DASHBOARD_BASE}/users/${CRUD.create}`,
-            edit: (id: string | number) => `${DASHBOARD_BASE}/users/${CRUD.edit}/${id}`
+            [CrudActionsEnums.Index]: `${DASHBOARD_BASE}/users/${CRUD.index}`,
+            [CrudActionsEnums.Create]: `${DASHBOARD_BASE}/users/${CRUD.create}`,
+            [CrudActionsEnums.Edit]: (id: string | number) => `${DASHBOARD_BASE}/users/${CRUD.edit}/${id}`
+        },
+        companies: {
+            [CrudActionsEnums.Index]: `${DASHBOARD_BASE}/companies/${CRUD.index}`,
+            [CrudActionsEnums.Create]: `${DASHBOARD_BASE}/companies/${CRUD.create}`,
+            [CrudActionsEnums.Show]: (id: string | number) => `${DASHBOARD_BASE}/companies/${id}`,
+            [CrudActionsEnums.Edit]: (id: string | number) => `${DASHBOARD_BASE}/companies/${CRUD.edit}/${id}`
         }
     },
 
+}
+
+const API_BASE = "/api"
+export const API_ROUTES = {
+    models: {
+        companies: {
+            [CrudActionsEnums.Index]: (params?: Record<string, any>) => {
+                if (!params) return `${API_BASE}/companies`
+                const searchParams = new URLSearchParams()
+                Object.entries(params).forEach(([key, value]) => {
+                    if (value !== undefined && value !== null) {
+                        searchParams.append(key, value.toString())
+                    }
+                })
+                return `${API_BASE}/companies?${searchParams.toString()}`
+            },
+            [CrudActionsEnums.Create]: `${API_BASE}/companies`,
+            [CrudActionsEnums.Show]: (id: string | number) => `${API_BASE}/companies/${id}`,
+            [CrudActionsEnums.Update]: (id: string | number) => `${API_BASE}/companies/${id}`,
+            [CrudActionsEnums.Delete]: (id: string | number) => `${API_BASE}/companies/${id}`
+        },
+        status: {
+            [CrudActionsEnums.Index]: (params?: Record<string, any>) => {
+                if (!params) return `${API_BASE}/statuses`
+                const searchParams = new URLSearchParams()
+                Object.entries(params).forEach(([key, value]) => {
+                    if (value !== undefined && value !== null) {
+                        searchParams.append(key, value.toString())
+                    }
+                })
+                return `${API_BASE}/statuses?${searchParams.toString()}`
+            },
+            [CrudActionsEnums.Show]: (id: string | number) => `${API_BASE}/statuses/${id}`
+        },
+        tenants: {
+            [CrudActionsEnums.Index]: (params?: Record<string, any>) => {
+                if (!params) return `${API_BASE}/tenants`
+                const searchParams = new URLSearchParams()
+                Object.entries(params).forEach(([key, value]) => {
+                    if (value !== undefined && value !== null) {
+                        searchParams.append(key, value.toString())
+                    }
+                })
+                return `${API_BASE}/tenants?${searchParams.toString()}`
+            },
+            userByTenant: (tenantId: string | number) => `${API_BASE}/users/tenant/${tenantId}`
+        }
+    },
+    auth: {
+        me: `${API_BASE}/auth/me`
+    }
 }
 
 

@@ -1,6 +1,11 @@
 export enum CrudActionsEnums {
+    Index = 'index',
     Create = 'create',
-    Update = 'update'
+    Store = 'store',
+    Edit = 'edit',
+    Update = 'update',
+    Delete = 'delete',
+    Show = 'show'
 }
 
 export enum GlobalActionsEnums {
