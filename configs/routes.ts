@@ -18,6 +18,11 @@ export const ROUTES = {
             index: `${DASHBOARD_BASE}/users/${CRUD.index}`,
             create: `${DASHBOARD_BASE}/users/${CRUD.create}`,
             edit: (id: string | number) => `${DASHBOARD_BASE}/users/${CRUD.edit}/${id}`
+        },
+        companies: {
+            index: `${DASHBOARD_BASE}/companies/${CRUD.index}`,
+            create: `${DASHBOARD_BASE}/companies/${CRUD.create}`,
+            edit: (id: string | number) => `${DASHBOARD_BASE}/companies/${CRUD.edit}/${id}`
         }
     },
 

@@ -10,7 +10,7 @@ const route = useRoute()
 const model = route.params.model as string
 
 const columns = ref([])
-const data = ref([])
+const data = ref<Company[]>([])
 
 const actions = [
   CrudActionsEnums.Create
@@ -28,6 +28,19 @@ onMounted(async () => {
     },
     // ...
   ]
+})
+
+import { apiFetch } from '~/utils/api';
+import type { CompanyResource } from '~/types/company'
+
+
+onMounted(async () => {
+  try {
+    const companies: CompanyResource = await apiFetch(`/api/${model}?page=1&limit=10`)
+    data.value = companies.items;
+  } catch (e) {
+    console.error('Erreur lors du fetch des companies:', e)
+  }
 })
 </script>
 
