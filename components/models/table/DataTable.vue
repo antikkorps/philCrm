@@ -16,6 +16,9 @@ import {
 } from '@/components/ui/table'
 import type { PaginationType } from '~/types/pagination';
 import Pagination from './Pagination.vue';
+import { useI18n } from 'vue-i18n';
+import { str } from '~/lib/str';
+const { t } = useI18n()
 
 const props = defineProps<{
   columns: ColumnDef<TData, TValue>[]
@@ -27,6 +30,7 @@ const table = useVueTable({
   get data() { return props.data },
   get columns() { return props.columns },
   getCoreRowModel: getCoreRowModel(),
+  meta: { t }
 })
 </script>
 
@@ -37,8 +41,12 @@ const table = useVueTable({
         <TableHeader>
           <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
             <TableHead v-for="header in headerGroup.headers" :key="header.id">
-              <FlexRender v-if="!header.isPlaceholder" :render="header.column.columnDef.header"
-                :props="header.getContext()" />
+              <template v-if="typeof header.column.columnDef.header === 'string'">
+                {{ str($t(header.column.columnDef.header)).capitalize().value() }}
+              </template>
+              <template v-else>
+                <FlexRender :render="header.column.columnDef.header" :props="header.getContext()" />
+              </template>
             </TableHead>
           </TableRow>
         </TableHeader>

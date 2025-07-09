@@ -7,10 +7,10 @@
                 data: form.name,
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
-                },
-                placeholder: 'Nom de l\'entreprise',
+                    },
+                    placeholder: str($t('attributes.name.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Nom de l\'entreprise',
+                label: str($t('attributes.name.name')).capitalize().value(),
                 error: errors.name
             }" fieldName="name" :required="true"  />
 
@@ -21,9 +21,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Numéro de client',
+                placeholder: str($t('attributes.client_number.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Numéro de client',
+                label: str($t('attributes.client_number.name')).capitalize().value(),
                 error: errors.client_number
             }" fieldName="client_number" :required="false" />
 
@@ -35,15 +35,15 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Assigné à',
+                placeholder: str($t('attributes.assigned_to.placeholder')).capitalize().value(),
                 options: users.map(user => ({
                     label: user.firstName + ' ' + user.lastName,
                     value: user.id
                 })),
             }" :group="{
-                label: 'Assigné à',
+                label: str($t('attributes.assigned_to.name')).capitalize().value(),
                 error: errors.assignedToId,
-            }" fieldName="assignedToId" :required="false" />
+            }" fieldName="assignedToId" :required="true" />
 
             <PhilInput :field="{
                 inputType: 'text',
@@ -52,9 +52,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Groupe client',
+                placeholder: str($t('attributes.client_group.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Groupe client',
+                label: str($t('attributes.client_group.name')).capitalize().value(),
                 error: errors.client_group
             }" fieldName="client_group" :required="false" />
 
@@ -70,9 +70,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'URL du site web',
+                placeholder: str($t('attributes.website.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'URL du site web',
+                label: str($t('attributes.website.name')).capitalize().value(),
                 error: errors.website
             }" fieldName="website" :required="false" />
 
@@ -83,9 +83,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Industrie',
+                placeholder: str($t('attributes.industry.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Industrie',
+                label: str($t('attributes.industry.name')).capitalize().value(),
                 error: errors.industry
             }" fieldName="industry" :required="false" />
             <PhilInput :field="{
@@ -95,13 +95,13 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Statut',
+                placeholder: str($t('attributes.status.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
                 options: statuses.map(status => ({
                     label: status.name,
                     value: status.id
                 })),
             }" :group="{
-                label: 'Statut',
+                label: str($t('attributes.status.name')).capitalize().value(),
                 error: errors.statusId,
             }" fieldName="statusId" :required="true" />
 
@@ -119,9 +119,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Chiffre d\'affaires global',
+                placeholder: str($t('attributes.globalRevenue.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Chiffre d\'affaires global',
+                label: str($t('attributes.globalRevenue.name')).capitalize().value(),
                 error: errors.globalRevenue,
             }" fieldName="globalRevenue" :required="false" />
             <PhilInput :field="{
@@ -131,9 +131,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Taille de l\'entreprise',
+                placeholder: str($t('attributes.size.placeholder', { of: $t('global.article.of'), article: '' , model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Taille de l\'entreprise',
+                label: str($t('attributes.size.name')).capitalize().value(),
                 error: errors.size
             }" fieldName="size" :required="false" />
 
@@ -147,9 +147,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Adresse',
+                placeholder: str($t('attributes.address.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Adresse',
+                label: str($t('attributes.address.name')).capitalize().value(),
                 error: errors.address
             }" fieldName="address" :required="false" />
 
@@ -160,9 +160,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Complément d\'adresse',
+                placeholder: str($t('attributes.address_complement.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Complément d\'adresse',
+                label: str($t('attributes.address_complement.name')).capitalize().value(),
                 error: errors.address_complement
             }" fieldName="address_complement" :required="false" />
 
@@ -175,9 +175,9 @@
                     setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Ville',
+                placeholder: str($t('attributes.city.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Ville',
+                label: str($t('attributes.city.name')).capitalize().value(),
                 error: errors.city
             }" fieldName="city" :required="false" />
 
@@ -188,9 +188,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Code postal',
+                placeholder: str($t('attributes.zipCode.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Code postal',
+                label: str($t('attributes.zipCode.name')).capitalize().value(),
                 error: errors.zipCode
             }" fieldName="zipCode" :required="false" />
 
@@ -201,9 +201,9 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Code régional',
+                placeholder: str($t('attributes.code_regional.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Code régional',
+                label: str($t('attributes.code_regional.name')).capitalize().value(),
                 error: errors.code_regional
             }" fieldName="code_regional" :required="false" />
             <PhilInput :field="{
@@ -213,16 +213,17 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: 'Pays',
+                placeholder: str($t('attributes.country.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
             }" :group="{
-                label: 'Pays',
+                label: str($t('attributes.country.name')).capitalize().value(),
                 error: errors.country
             }" fieldName="country" :required="false" />
 
         </div>
 
         <Button v-if="isEditable" type="submit">
-            {{ isEdit ? 'Mettre à jour l\'entreprise' : 'Créer l\'entreprise' }}
+            {{ isEdit ? $t('global.action.edit_model', { article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) }) : 
+            $t('global.action.create_model', { article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) }) }}
         </Button>
 
     </form>
@@ -241,6 +242,8 @@ import type { Status, StatusResource } from '~/types/status';
 import type { Me, User, UserResource } from '~/lib/types/auth';
 import { toast } from 'vue-sonner';
 import { CrudActionsEnums } from '~/enums/actions';
+import { str } from '~/lib/str';
+import { joinArticle } from '~/lib/utils';
 const router = useRouter()
 
 const props = defineProps<{

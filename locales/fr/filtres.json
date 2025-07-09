@@ -1,0 +1,10 @@
+{
+    "filtres": {
+        "label": "filtre | filtres",
+        "filters_for": "filtres pour {model}",
+        "search_by": "rechercher par {attribute}",
+        "reset_search": "réinitialiser la recherche",
+        "min": "min",
+        "max": "max"
+    }
+}

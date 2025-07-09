@@ -47,8 +47,8 @@ function handleCancel() {
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel :disabled="props.loading" @click="handleCancel">Annuler</AlertDialogCancel>
-        <AlertDialogAction :disabled="props.loading" @click="handleConfirm">Confirmer</AlertDialogAction>
+        <AlertDialogCancel :disabled="props.loading" @click="handleCancel">{{ $t('global.action.cancel') }}</AlertDialogCancel>
+        <AlertDialogAction :disabled="props.loading" @click="handleConfirm">{{ $t('global.action.confirm') }}</AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>

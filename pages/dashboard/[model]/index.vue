@@ -33,7 +33,7 @@ const fetchData = async (page: number = 1, searchParams?: Record<string, string>
         }
       })
     }
-
+// FIXME: le type doit être générique dans la mesure du possible
     const dataResources: CompanyResource = await apiFetch(url)
     data.value = dataResources.items;
     console.log(url)
@@ -96,12 +96,19 @@ onMounted(async () => {
 </script>
 
 <template>
-  <TitleSection :title="'List of ' + model" :actions="actions" />
-
+  <TitleSection :title="$t('global.crud.list_of', { article: $t('global.article.of_s'), model: $t('model.companies.name', 2) })" :actions="actions" />
   <div class=" py-10 space-y-5">
     <div className="w-full flex justify-end">
       <FiltersMenu :model="model" />
     </div>
+    <form>
+      <label for="locale-select">{{ $t('language') }}: </label>
+      <select id="locale-select" v-model="$i18n.locale">
+        <option value="en">en</option>
+        <option value="fr">fr</option>
+        <option value="ja">ja</option>
+      </select>
+    </form>
     <DataTable v-if="pagination" :columns="columns" :data="data" :pagination="pagination"
       @pageChange="handlePageChange" />
   </div>

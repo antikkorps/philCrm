@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Search, X } from 'lucide-vue-next'
 import LabelFilter from './LabelFilter.vue'
+import { str } from '~/lib/str'
 
 interface Props {
   searchField: string
@@ -71,12 +72,12 @@ watch(searchValue, (newValue) => {
 
 <template>
   <div class="space-y-2" >
-    <LabelFilter :label-for="searchField" :label="`Rechercher par ${searchField}`" />
+    <LabelFilter :label-for="searchField" :label="str($t('filtres.search_by', { attribute: str($t(`attributes.${searchField}.name`)).capitalize().value() })).capitalize().value()" />
     <div class="flex items-center border border-input rounded-md p-1">
       <Input
         :id="`search-${searchField}`"
         v-model="searchValue"
-        :placeholder="`Rechercher par ${searchField}`"
+        :placeholder="str($t('filtres.search_by', { attribute: str($t(`attributes.${searchField}.name`)).capitalize().value() })).capitalize().value()"
         class="h-7 flex-1 border-0 focus-visible:ring-0 focus-visible:ring-offset-0 shadow-none"
       />
       
@@ -86,6 +87,7 @@ watch(searchValue, (newValue) => {
         size="xxs"
         :disabled="!hasActiveSearch"
         @click="resetSearch"
+        :title="str($t('filtres.reset_search')).capitalize().value()"
       >
         <X class="h-2 w-2" />
       </Button>

@@ -1,9 +1,9 @@
 <template>
   <form class="flex flex-col gap-6" @submit.prevent="onSubmit">
     <div class="flex flex-col items-center gap-2 text-center">
-      <h1 class="text-2xl font-bold">Créer un compte</h1>
+      <h1 class="text-2xl font-bold">{{ str($t('register.title')).capitalize().value() }}</h1>
       <p class="text-muted-foreground text-sm text-balance">
-        Remplis les champs ci-dessous pour t'inscrire
+        {{ str($t('register.description')).capitalize().value() }}
       </p>
     </div>
 
@@ -16,11 +16,11 @@
     </div>
     <div class="grid gap-5">
       <div class="grid gap-3">
-        <Label for="name">Nom</Label>
-        <Input id="name" v-model="name" type="text" placeholder="Votre nom" required />
+        <Label for="name">{{ str($t('attributes.your_name.name')).capitalize().value() }}</Label>
+        <Input id="name" v-model="name" type="text" :placeholder="str($t('attributes.your_name.placeholder')).capitalize().value()" required />
       </div>
       <div class="grid gap-3">
-        <Label for="email">Email</Label>
+        <Label for="email">{{ str($t('attributes.email.name')).capitalize().value() }}</Label>
         <Input
           id="email"
           v-model="email"
@@ -30,22 +30,22 @@
         />
       </div>
       <div class="grid gap-3">
-        <Label for="password">Mot de passe</Label>
-        <Input id="password" v-model="password" type="password" required />
+        <Label for="password">{{ str($t('attributes.password.name')).capitalize().value() }}</Label>
+        <Input id="password" v-model="password" type="password" required :placeholder="str($t('attributes.password.placeholder')).capitalize().value()" />
       </div>
       <div class="grid gap-3">
-        <Label for="confirmPassword">Confirme le mot de passe</Label>
-        <Input id="confirmPassword" v-model="confirmPassword" type="password" required />
+        <Label for="confirmPassword">{{ str($t('attributes.confirm_password.name')).capitalize().value() }}</Label>
+        <Input id="confirmPassword" v-model="confirmPassword" type="password" required :placeholder="str($t('attributes.confirm_password.placeholder')).capitalize().value()" />
       </div>
       <Button type="submit" class="w-full" :disabled="authStore.isLoading">
-        <span v-if="authStore.isLoading">Inscription en cours...</span>
-        <span v-else>S'inscrire</span>
+        <span v-if="authStore.isLoading">{{ str($t('register.register_loading')).capitalize().value() }}</span>
+        <span v-else>{{ str($t('register.register')).capitalize().value() }}</span>
       </Button>
       <div
         class="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t"
       >
         <span class="bg-background text-muted-foreground relative z-10 px-2">
-          Ou continue avec
+          {{ str($t('register.login_with')).capitalize().value() }}
         </span>
       </div>
       <Button variant="outline" class="w-full">
@@ -55,12 +55,12 @@
             fill="currentColor"
           />
         </svg>
-        S'inscrire avec GitHub
+        {{ str($t('register.login_with_github')).capitalize().value() }}
       </Button>
     </div>
     <div class="text-center text-sm">
-      Déjà un compte ?
-      <NuxtLink to="/login" class="underline underline-offset-4"> Connexion </NuxtLink>
+      {{ str($t('register.already_have_account')).capitalize().value() }}
+      <NuxtLink to="/login" class="underline underline-offset-4"> {{ str($t('register.login_link')).capitalize().value() }} </NuxtLink>
     </div>
   </form>
 </template>
@@ -71,6 +71,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ref } from "vue"
 import { useRouter } from "vue-router"
+import { str } from "~/lib/str"
 import { useAuthStore } from "~/stores/auth.store"
 
 const router = useRouter()

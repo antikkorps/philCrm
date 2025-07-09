@@ -9,18 +9,21 @@ import { Building, Home, Settings, Users } from "lucide-vue-next"
 import { ROUTES } from '~/configs/routes';
 import SidebarSingles from '@/components/app-sidebar/SidebarSingles.vue';
 import SidebarCollapsibles from '@/components/app-sidebar/SidebarCollapsibles.vue';
+import { str } from '~/lib/str';
+import { useI18n } from 'vue-i18n';
 const route = useRoute()
+const { t } = useI18n()
 // TODO: ajouter la condition isVisible, pour l'instant en dur mais qui servira pour les permissions
 const items = {
   application: [
     {
-      title: "Tableau de bord",
+      title: str(t('sidebar.dashboard')).capitalize().value(),
       url: ROUTES.dashboard.index,
       icon: Home,
       isVisible: true
     },
     {
-      title: "Paramètres",
+      title: str(t('sidebar.settings')).capitalize().value(),
       url: ROUTES.dashboard.settings,
       icon: Settings,
       isVisible: true
@@ -28,37 +31,37 @@ const items = {
   ],
   models: [
     {
-      title: "Utilisateurs",
+      title: str(t('sidebar.users')).capitalize().value(),
       url: "#",
       icon: Users,
       isActive: route.path.startsWith(ROUTES.dashboard.users.index),
       isVisible: true,
       items: [
         {
-          title: 'Liste',
+          title: str(t('sidebar.list')).capitalize().value(),
           url: ROUTES.dashboard.users.index,
           isVisible: true
         },
         {
-          title: 'Créer',
+          title: str(t('sidebar.create')).capitalize().value(),
           url: ROUTES.dashboard.users.create,
           isVisible: true
         },  
       ],
     }, {
-      title: "Company",
+      title: str(t('sidebar.companies')).capitalize().value(),
       url: "#",
       icon: Building,
       isActive: route.path.startsWith(ROUTES.dashboard.companies.index),
       isVisible: true,
       items: [
         {
-          title: "Liste",
+          title: str(t('sidebar.list')).capitalize().value(),
           url: ROUTES.dashboard.companies.index,
           isVisible: true
         },
         {
-          title: "Créer",
+          title: str(t('sidebar.create')).capitalize().value(),
           url: ROUTES.dashboard.companies.create,
           isVisible: true
         }

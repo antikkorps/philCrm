@@ -10,6 +10,7 @@ import { inputTypes } from '~/types/inputs'
 import Label from './label/Label.vue'
 import { useRoute } from 'vue-router'
 import LabelFilter from '../models/table/Filters/LabelFilter.vue'
+import { str } from '~/lib/str'
 
 const props = defineProps<SliderRootProps & {
   class?: HTMLAttributes['class'],
@@ -123,15 +124,15 @@ defineExpose({
 
 <template>
   <div class="w-full">
-    <LabelFilter :label-for="label" v-if="label" :label="label" />
+    <LabelFilter :label-for="label" v-if="label" :label="str($t(`${label}`)).capitalize().value()" />
     <div class="flex items-center gap-2 mb-4">
       <div class="flex flex-col items-center">
-        <PhilInput :group="{ label: 'min', className: 'w-full' }" :field="minInputField" fieldName="min" />
+        <PhilInput :group="{ label: str($t('filtres.min')).capitalize().value(), className: 'w-full' }" :field="minInputField" fieldName="min" />
         <span v-if="props.minHelper" class="text-xs text-muted-foreground mt-1">{{ props.minHelper }}</span>
       </div>
       <span class="text-muted-foreground mt-4">—</span>
       <div class="flex flex-col items-center">
-        <PhilInput :group="{ label: 'max', className: 'w-full' }" :field="maxInputField" fieldName="max" />
+        <PhilInput :group="{ label: str($t('filtres.max')).capitalize().value(), className: 'w-full' }" :field="maxInputField" fieldName="max" />
         <span v-if="props.maxHelper" class="text-xs text-muted-foreground mt-1">{{ props.maxHelper }}</span>
       </div>
     </div>
@@ -152,8 +153,8 @@ defineExpose({
         class="border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50" />
     </SliderRoot>
     <div class="mt-2" v-if="label">
-      <p class="text-sm  text-muted-foreground">{{ name }} min: {{ (displaySliderValue && displaySliderValue[0] !== undefined ? displaySliderValue[0] : 0) }} {{
-        props.devise }} — {{ name }} max: {{ (displaySliderValue && displaySliderValue[1] !== undefined ?
+      <p class="text-sm  text-muted-foreground">{{ name }} {{ $t('filtres.min') }}: {{ (displaySliderValue && displaySliderValue[0] !== undefined ? displaySliderValue[0] : 0) }} {{
+        props.devise }} — {{ name }} {{ $t('filtres.max') }}: {{ (displaySliderValue && displaySliderValue[1] !== undefined ?
         displaySliderValue[1] : 100) }} {{ props.devise }}</p>
     </div>
   </div>
