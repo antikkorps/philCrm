@@ -2,13 +2,10 @@
     "global": {
         "hello": "Bonjour, {name}!",
         "article": {
-            "the_m": "le",
-            "the_f": "la",
             "the_s": "l'",
-            "of": "de",
-            "of_s": "des",
-            "a_m": "un",
-            "a_f": "une"
+            "of": "du | de | des",
+            "the": "le | la | l'",
+            "a": "un | une"
         },
         "for": "pour",
         "action": {
@@ -21,14 +18,14 @@
             "save": "Enregistrer",
             "confirm": "Confirmer",
             "close": "Fermer",
-            "delete_model": "Supprimer {article} {model}",
-            "edit_model": "Modifier {article} {model}",
-            "show_model": "Voir {article} {model}",
-            "create_model": "Créer {article} {model}",
-            "cancel_model": "Annuler {article} {model}",
-            "save_model": "Enregistrer {article} {model}",
-            "confirm_model": "Confirmer {article} {model}",
-            "close_model": "Fermer {article} {model}",
+            "delete_model": "Supprimer",
+            "edit_model": "Modifier",
+            "show_model": "Voir",
+            "create_model": "Créer",
+            "cancel_model": "Annuler",
+            "save_model": "Enregistrer",
+            "confirm_model": "Confirmer",
+            "close_model": "Fermer",
             "open_menu": "Ouvrir le menu",
             "apply_filters": "Appliquer les filtres",
             "reset_filters": "Réinitialiser les filtres"
@@ -52,9 +49,12 @@
                 "conflict": "Conflit"
             },
             "description": {
-                "deleted_model": "{article} {model} supprimé avec succès",
+                "deleted_model": "{model} supprimé avec succès",
                 "deletion_not_supported": "Suppression non supportée pour ce modèle.",
-                "error_deletion": "Une erreur est survenue lors de la suppression"
+                "error_deletion": "Une erreur est survenue lors de la suppression",
+                "error_creation": "Une erreur est survenue lors de la création",
+                "updated_model": "{model} mis à jour avec succès",
+                "created_model": "{model} créé avec succès"
             }
         },
         "crud": {

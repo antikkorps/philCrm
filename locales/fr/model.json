@@ -2,6 +2,9 @@
     "model": {
         "companies": {
             "name": "entreprise | entreprises"
+        },
+        "contacts": {
+            "name": "contact | contacts"
         }
     }
 }

@@ -79,6 +79,26 @@
         "your_name": {
             "name": "votre nom",
             "placeholder": "entrez votre nom"
+        },
+        "company": {
+            "name": "entreprise",
+            "placeholder": "entreprise {of} {article} {model}"
+        },
+        "position": {
+            "name": "position",
+            "placeholder": "position {of} {article} {model}"
+        },
+        "firstName": {
+            "name": "prénom",
+            "placeholder": "prénom {of} {article} {model}"
+        },
+        "lastName": {
+            "name": "nom",
+            "placeholder": "nom {of} {article} {model}"
+        },
+        "complete_name": {
+            "name": "nom complet",
+            "placeholder": "nom complet {of} {article} {model}"
         }
     }
 }

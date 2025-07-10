@@ -2,7 +2,7 @@
 import { EyeIcon, MoreHorizontal, PencilIcon, TrashIcon } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { API_ROUTES, ROUTES } from '~/configs/routes';
+import { API_ROUTES } from '~/configs/routes';
 import { getDashboardEdit, getDashboardShow } from '~/utils/dashboardModelRoutes';
 import AlertModal from '~/components/ui/AlertModal.vue';
 import { toast } from 'vue-sonner';
@@ -11,6 +11,8 @@ import { useI18n } from 'vue-i18n';
 import { str } from '~/lib/str';
 const router = useRouter();
 const { t } = useI18n()
+import { getDashboardIndex } from '~/utils/dashboardModelRoutes';
+
 // FIXME: adapter les props et tout
 const props = defineProps<{
   model: string;
@@ -28,9 +30,10 @@ async function onDelete() {
   try {
     await apiFetch(modelApi.delete(props.id), { method: 'DELETE' })
     toast.success(t('global.toast.title.success'), {
-      description: str(t('global.toast.description.deleted_model', { article: t('global.article.the_s'), model: t('model.companies.name') })).capitalize().value(),
+      description: str(t('global.toast.description.deleted_model', { model: str(t(`model.${props.model}.name`)).capitalize().value() })).capitalize().value(),
     })
-    router.push(ROUTES.dashboard.companies.index)
+    const redirectUrl = getDashboardIndex(props.model);
+    router.push(redirectUrl);
   } catch (err) {
   if (err instanceof ApiError && err.status === 409) {
     toast.info(t('global.toast.title.conflict'), {
@@ -59,7 +62,7 @@ async function onDelete() {
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end">
       <DropdownMenuLabel>Actions</DropdownMenuLabel>
-      <DropdownMenuItem :title="$t('global.action.show_model', { article: $t('global.article.the_s'), model: $t('model.companies.name') })">
+      <DropdownMenuItem :title="`${$t('global.action.show_model')} - ${str($t(`model.${props.model}.name`)).capitalize().value()}`">
         <NuxtLink class="flex items-center gap-2" :to="getDashboardShow(props.model, props.id) || ''">
           <EyeIcon class="w-4 h-4" />
           <span>
@@ -67,7 +70,7 @@ async function onDelete() {
           </span>
         </NuxtLink>
       </DropdownMenuItem>
-      <DropdownMenuItem :title="$t('global.action.edit_model', { article: $t('global.article.the_s'), model: $t('model.companies.name') })">
+      <DropdownMenuItem :title="`${$t('global.action.edit_model')} - ${str($t(`model.${props.model}.name`)).capitalize().value()}`">
         <NuxtLink class="flex items-center gap-2" :to="getDashboardEdit(props.model, props.id) || ''">
           <PencilIcon class="w-4 h-4" />
           <span>
@@ -75,7 +78,7 @@ async function onDelete() {
           </span>
         </NuxtLink>
       </DropdownMenuItem>
-      <DropdownMenuItem :title="$t('global.action.delete_model', { article: $t('global.article.the_s'), model: $t('model.companies.name') })" @click="showAlert = true" class="flex items-center gap-2">
+      <DropdownMenuItem :title="`${$t('global.action.delete_model')} - ${str($t(`model.${props.model}.name`)).capitalize().value()}`" @click="showAlert = true" class="flex items-center gap-2">
         <TrashIcon class="w-4 h-4" />
         <span>
           {{ $t('global.action.delete') }}

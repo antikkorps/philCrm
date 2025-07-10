@@ -10,5 +10,10 @@ export default {
     [CrudActionsEnums.Create]: () => import('@/components/models/companies/CompanyForm.vue'),
     [CrudActionsEnums.Edit]: () => import('@/components/models/companies/CompanyForm.vue'),
     [CrudActionsEnums.Show]: () => import('@/components/models/companies/CompanyForm.vue'),
+  },
+  contacts: {
+    [CrudActionsEnums.Create]: () => import('@/components/models/contacts/ContactForm.vue'),
+    [CrudActionsEnums.Edit]: () => import('@/components/models/contacts/ContactForm.vue'),
+    [CrudActionsEnums.Show]: () => import('@/components/models/contacts/ContactForm.vue'),
   }
 } 

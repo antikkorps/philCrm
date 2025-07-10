@@ -96,7 +96,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <TitleSection :title="$t('global.crud.list_of', { article: $t('global.article.of_s'), model: $t('model.companies.name', 2) })" :actions="actions" />
+  <TitleSection :title="$t('global.crud.list_of')" :model="model" :actions="actions" />
   <div class=" py-10 space-y-5">
     <div className="w-full flex justify-end">
       <FiltersMenu :model="model" />

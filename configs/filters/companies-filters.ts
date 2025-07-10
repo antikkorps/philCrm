@@ -55,7 +55,6 @@ export const companiesFilters = [
         getOptions: async () => {
             const me = await apiFetch(API_ROUTES.auth.me) as Me;
             const response = await apiFetch(API_ROUTES.models.tenants.userByTenant(me.tenantId)) as UserResource
-            console.log(response)
             const users = response.items.map((user: User) => ({
                 value: user.id,
                 label: user.firstName

@@ -8,7 +8,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                     },
-                    placeholder: str($t('attributes.name.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                    placeholder: str($t('attributes.name.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.name.name')).capitalize().value(),
                 error: errors.name
@@ -21,7 +21,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.client_number.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.client_number.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.client_number.name')).capitalize().value(),
                 error: errors.client_number
@@ -52,7 +52,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.client_group.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.client_group.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.client_group.name')).capitalize().value(),
                 error: errors.client_group
@@ -70,7 +70,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.website.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.website.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.website.name')).capitalize().value(),
                 error: errors.website
@@ -83,7 +83,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.industry.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.industry.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.industry.name')).capitalize().value(),
                 error: errors.industry
@@ -95,7 +95,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.status.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.status.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
                 options: statuses.map(status => ({
                     label: status.name,
                     value: status.id
@@ -119,7 +119,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.globalRevenue.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.globalRevenue.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.globalRevenue.name')).capitalize().value(),
                 error: errors.globalRevenue,
@@ -131,7 +131,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.size.placeholder', { of: $t('global.article.of'), article: '' , model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.size.placeholder', { of: $t('global.article.of'), article: '' , model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.size.name')).capitalize().value(),
                 error: errors.size
@@ -147,7 +147,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.address.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.address.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.address.name')).capitalize().value(),
                 error: errors.address
@@ -160,7 +160,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.address_complement.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.address_complement.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.address_complement.name')).capitalize().value(),
                 error: errors.address_complement
@@ -175,7 +175,7 @@
                     setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.city.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.city.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.city.name')).capitalize().value(),
                 error: errors.city
@@ -188,7 +188,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.zipCode.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.zipCode.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.zipCode.name')).capitalize().value(),
                 error: errors.zipCode
@@ -201,7 +201,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.code_regional.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.code_regional.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.code_regional.name')).capitalize().value(),
                 error: errors.code_regional
@@ -213,7 +213,7 @@
                 setData: (key: string, value: any) => {
                     (form as any)[key] = value
                 },
-                placeholder: str($t('attributes.country.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })).capitalize().value(),
+                placeholder: str($t('attributes.country.placeholder', { of: $t('global.article.of'), article: '', model: joinArticle($t('global.article.the_s'), $t(`model.${model}.name`)) })).capitalize().value(),
             }" :group="{
                 label: str($t('attributes.country.name')).capitalize().value(),
                 error: errors.country
@@ -222,8 +222,8 @@
         </div>
 
         <Button v-if="isEditable" type="submit">
-            {{ isEdit ? $t('global.action.edit_model', { article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) }) : 
-            $t('global.action.create_model', { article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) }) }}
+            {{ isEdit ? $t('global.action.edit_model') : 
+            $t('global.action.create_model') }}
         </Button>
 
     </form>
@@ -236,7 +236,7 @@ import PhilInput from '~/components/forms/PhilInput.vue'
 import type { Company } from '~/types/company';
 import { z } from 'zod'
 import Button from '~/components/ui/button/Button.vue';
-import { API_ROUTES, ROUTES } from '~/configs/routes';
+import { API_ROUTES } from '~/configs/routes';
 import { apiFetch } from '~/utils/api';
 import type { Status, StatusResource } from '~/types/status';
 import type { Me, User, UserResource } from '~/lib/types/auth';
@@ -244,11 +244,14 @@ import { toast } from 'vue-sonner';
 import { CrudActionsEnums } from '~/enums/actions';
 import { str } from '~/lib/str';
 import { joinArticle } from '~/lib/utils';
+import { getDashboardIndex } from '~/utils/dashboardModelRoutes';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n()
 const router = useRouter()
-
 const props = defineProps<{
     modelValue?: Company | null
     action: CrudActionsEnums
+    model: string
 }>()
 
 const isEditable = computed(() => props.action === CrudActionsEnums.Edit || props.action === CrudActionsEnums.Create)
@@ -349,19 +352,18 @@ async function onSubmit() {
 
     const updateUrl = API_ROUTES.models.companies.update(route.params.id as string);
     try {
-        const response = await apiFetch(isEdit.value ? updateUrl : createUrl, {
+        await apiFetch(isEdit.value ? updateUrl : createUrl, {
             method: isEdit.value ? 'PUT' : 'POST',
             body: JSON.stringify(form.value)
         })
-        toast.success('Succeed', {
-            description: isEdit.value ? 'L\'entreprise a été mise à jour avec succès' : 'L\'entreprise a été créée avec succès',
+        toast.success(t('global.toast.title.success'), {
+            description: isEdit.value ? str(t('global.toast.description.updated_model', { model: t(`model.${props.model}.name`) })).capitalize().value() : str(t('global.toast.description.created_model', { model: t(`model.${props.model}.name`) })).capitalize().value( ),
         })
-        router.push(ROUTES.dashboard.companies.index);
-    } catch (error) {
-        // console.error('Erreur lors de la création:', error)
-        // alert('Erreur lors de la création de l\'entreprise')
-        toast.error('Error', {
-            description: 'Une erreur est survenue lors de la création de l\'entreprise',
+        const redirectUrl = getDashboardIndex(props.model);
+        router.push(redirectUrl);
+    } catch (err) {
+        toast.error(t('global.toast.title.error'), {
+            description: t('global.toast.description.error_creation'),
         })
         
     }

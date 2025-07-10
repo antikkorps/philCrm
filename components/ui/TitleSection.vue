@@ -6,7 +6,7 @@
                     <ArrowLeft class="size-4" />
                 </NuxtLink>
             </Button>
-            <h1 class="text-3xl font-bold">{{ title }}</h1>
+            <h1 class="text-3xl font-bold">{{ str($t(`model.${model}.name`)).capitalize().value() }} - {{ title }}</h1>
         </div>
         <Button v-if="actions.includes(CrudActionsEnums.Create)" size="sm" as-child>
             <NuxtLink :title="$t('global.action.create')" :href="createHref">
@@ -19,11 +19,13 @@
 <script setup lang="ts">
 import { ArrowLeft, Plus } from 'lucide-vue-next';
 import { CrudActionsEnums, GlobalActionsEnums } from '~/enums/actions';
+import { str } from '~/lib/str';
 import { getDashboardIndex, getDashboardCreate } from '~/utils/dashboardModelRoutes';
 
-const props = defineProps<{
+defineProps<{
     title: string;
     actions: (CrudActionsEnums | GlobalActionsEnums)[]
+    model: string
 }>()
 
 

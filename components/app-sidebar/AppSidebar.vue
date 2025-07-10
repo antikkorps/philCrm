@@ -48,7 +48,8 @@ const items = {
           isVisible: true
         },  
       ],
-    }, {
+    }, 
+    {
       title: str(t('sidebar.companies')).capitalize().value(),
       url: "#",
       icon: Building,
@@ -63,6 +64,25 @@ const items = {
         {
           title: str(t('sidebar.create')).capitalize().value(),
           url: ROUTES.dashboard.companies.create,
+          isVisible: true
+        }
+      ]
+    },
+    {
+      title: str(t('sidebar.contacts')).capitalize().value(),
+      url: "#",
+      icon: Building,
+      isActive: route.path.startsWith(ROUTES.dashboard.contacts.index),
+      isVisible: true,
+      items: [
+        {
+          title: str(t('sidebar.list')).capitalize().value(),
+          url: ROUTES.dashboard.contacts.index,
+          isVisible: true
+        },
+        {
+          title: str(t('sidebar.create')).capitalize().value(),
+          url: ROUTES.dashboard.contacts.create,
           isVisible: true
         }
       ]

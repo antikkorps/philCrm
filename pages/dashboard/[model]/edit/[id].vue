@@ -5,7 +5,7 @@ import models from '~/configs/models'
 import TitleSection from '~/components/ui/TitleSection.vue'
 import { CrudActionsEnums, GlobalActionsEnums } from '~/enums/actions'
 import { API_ROUTES } from '~/configs/routes'
-import { joinArticle } from '~/lib/utils'
+
 definePageMeta({ layout: 'dashboard' })
 const route = useRoute()
 const model = route.params.model as string
@@ -34,9 +34,11 @@ const actions = [
 </script>
 
 <template>
-    <TitleSection :title="$t('global.action.edit_model', { article: '', model: joinArticle($t('global.article.the_s'), $t('model.companies.name')) })" :actions="actions" />
+    <TitleSection  
+    :model="model" 
+    :title="$t('global.action.edit_model')" :actions="actions" />
   <Suspense>
-    <component :is="component" v-if="component" :model-value="data" :action="CrudActionsEnums.Edit" />
+    <component :is="component" v-if="component" :model-value="data" :action="CrudActionsEnums.Edit" :model="model" />
     <div v-else>Modèle inconnu</div>
   </Suspense>
 </template> 
