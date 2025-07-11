@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { X } from 'lucide-vue-next'
+import { str } from '~/lib/str'
 // FIXME: not fully tested yet
 interface Props {
   searchField: string
@@ -66,12 +67,12 @@ const resetSelection = () => {
 
 <template>
   <div class="space-y-2">
-    <Label>{{ label || `Sélectionner ${searchField}` }}</Label>
+    <Label>{{ str($t(`${label}`)).capitalize().value() || `Sélectionner ${searchField}` }}</Label>
 
     <div class="flex gap-2 items-center">
       <Select v-model="selectedValue">
         <SelectTrigger class="flex-1">
-          <SelectValue :placeholder="`Sélectionner ${searchField}`" />
+          <SelectValue :placeholder="str($t(`${label}`)).capitalize().value()" />
         </SelectTrigger>
         <SelectContent>
           <SelectItem v-for="option in options" :key="option.value" :value="option.value">

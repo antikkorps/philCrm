@@ -17,6 +17,7 @@ import DateFilter from './DateFilter.vue';
 import CheckboxFilter from './CheckboxFilter.vue';
 import DualSlider from '~/components/ui/DualSlider.vue';
 import { Button } from '@/components/ui/button'
+import { str } from '~/lib/str'
 
 const props = defineProps<{
   model: string
@@ -148,14 +149,17 @@ const nonDualSliderCount = computed(() =>
 
 <template>
   <Sheet v-model:open="isOpen">
-    <SheetTrigger class="
+    <SheetTrigger 
+      :aria-label="str($t('filtres.label', 2)).capitalize().value()"
+      :title="str($t('filtres.label', 2)).capitalize().value()"
+    class="
     [&_svg]:size-5
     cursor-pointer border border-input rounded-md p-2 text-muted-foreground">
       <Funnel />
     </SheetTrigger>
     <SheetContent class=" md:max-w-2xl overflow-y-auto">
       <SheetHeader>
-        <SheetTitle class="text-xl font-semibold">Filtres pour {{ model }}</SheetTitle>
+        <SheetTitle class="text-xl font-semibold">{{ str($t('filtres.filters_for', { model })).capitalize().value() }}</SheetTitle>
       </SheetHeader>
 
       <div class="px-4 space-y-4 mt-6">
@@ -193,14 +197,16 @@ const nonDualSliderCount = computed(() =>
       </div>
       <SheetFooter>
         <div class="grid grid-cols-2 gap-4">
-          <Button class="w-full flex items-center justify-center gap-2" @click="applyFilters">
+          <Button :title="str($t('global.action.apply_filters')).capitalize().value()" class="w-full flex items-center justify-center gap-2" @click="applyFilters">
             <Funnel class="size-4" />
-            <span>Filtrer</span>
+            <span>{{ str($t('global.action.apply_filters')).capitalize().value() }}</span>
           </Button>
-          <Button class="w-full flex items-center justify-center gap-2" variant="secondary" type="button"
+          <Button 
+          :title="str($t('global.action.reset_filters')).capitalize().value()"
+          class="w-full flex items-center justify-center gap-2" variant="secondary" type="button"
             @click="resetAllFilters">
             <RotateCcw class="size-4" />
-            <span>Réinitialiser</span>
+            <span>{{ str($t('global.action.reset_filters')).capitalize().value() }}</span>
           </Button>
         </div>
       </SheetFooter>

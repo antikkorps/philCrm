@@ -2,14 +2,14 @@
     <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
             <Button v-if="actions.includes(GlobalActionsEnums.Back)" size="sm" as-child>
-                <NuxtLink :href="backHref">
+                <NuxtLink :title="$t('global.action.back')" :href="backHref">
                     <ArrowLeft class="size-4" />
                 </NuxtLink>
             </Button>
             <h1 class="text-3xl font-bold">{{ title }}</h1>
         </div>
         <Button v-if="actions.includes(CrudActionsEnums.Create)" size="sm" as-child>
-            <NuxtLink :href="createHref">
+            <NuxtLink :title="$t('global.action.create')" :href="createHref">
                 <Plus class="size-4" />
             </NuxtLink>
         </Button>

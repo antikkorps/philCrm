@@ -1,0 +1,84 @@
+{
+    "attributes": {
+        "name": {
+            "name": "nom",
+            "placeholder": "nom {of} {article} {model}"
+        },
+        "email": {
+            "name": "email",
+            "placeholder": "email {of} {article} {model}"
+        },
+        "phone": {
+            "name": "téléphone",
+            "placeholder": "téléphone {of} {article} {model}"
+        },
+        "industry": {
+            "name": "industrie",
+            "placeholder": "industrie {of} {article} {model}"
+        },
+        "status": {
+            "name": "statut",
+            "placeholder": "statut {of} {article} {model}"
+        },
+        "size": {
+            "name": "taille",
+            "placeholder": "taille {of} {article} {model}"
+        },
+        "address": {
+            "name": "adresse",
+            "placeholder": "adresse {of} {article} {model}"
+        },
+        "globalRevenue": {
+            "name": "revenu global",
+            "placeholder": "revenu global {of} {article} {model}"
+        },
+        "website": {
+            "name": "url du site web",
+            "placeholder": "site web {of} {article} {model}"
+        },
+        "client_group": {
+            "name": "groupe client",
+            "placeholder": "groupe client {of} {article} {model}"
+        },
+        "client_number": {
+            "name": "numéro client",
+            "placeholder": "numéro client {of} {article} {model}"
+        },
+        "assigned_to": {
+            "name": "assigné à",
+            "placeholder": "assigné à"
+        },
+        "address_complement": {
+            "name": "complément d'adresse",
+            "placeholder": "complément d'adresse {of} {article} {model}"
+        }, 
+        "city": {
+            "name": "ville",
+            "placeholder": "ville {of} {article} {model}"
+        },
+        "zipCode": {
+            "name": "code postal",
+            "placeholder": "code postal {of} {article} {model}"
+        },
+        "code_regional": {
+            "name": "code régional",
+            "placeholder": "code régional {of} {article} {model}"
+        },
+        "country": {
+            "name": "pays",
+            "placeholder": "pays {of} {article} {model}"
+        },
+        "password": {
+            "name": "mot de passe",
+            "placeholder": "entrez votre mot de passe"
+        },
+        "confirm_password": {
+            "name": "confirmer le mot de passe",
+            "placeholder": "confirmer le mot de passe"
+        },
+        "your_name": {
+            "name": "votre nom",
+            "placeholder": "entrez votre nom"
+        }
+    }
+}

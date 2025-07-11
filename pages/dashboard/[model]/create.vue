@@ -3,7 +3,6 @@ import { useRoute } from 'vue-router'
 import { defineAsyncComponent } from 'vue'
 import models from '~/configs/models'
 import { CrudActionsEnums, GlobalActionsEnums } from '~/enums/actions'
-import { str } from '~/lib/str'
 import TitleSection from '@/components/ui/TitleSection.vue'
 definePageMeta({ layout: 'dashboard' })
 const route = useRoute()
@@ -24,7 +23,7 @@ const actions = [
 </script>
 
 <template>
-   <TitleSection :title="'Create a ' + str(model).singular().value()" :actions="actions" />
+   <TitleSection :title="$t('global.action.create_model', { article: $t('global.article.a_f'), model: $t('model.companies.name') })" :actions="actions" />
   <Suspense>
     <component :is="component" v-if="component" :action="CrudActionsEnums.Create" />
     <div v-else>Modèle inconnu</div>

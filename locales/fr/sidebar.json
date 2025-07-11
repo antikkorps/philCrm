@@ -1,0 +1,10 @@
+{
+    "sidebar": {
+        "dashboard": "Tableau de bord",
+        "settings": "Paramètres",
+        "users": "Utilisateurs",
+        "companies": "Entreprises",
+        "list": "Liste",
+        "create": "Créer"
+    }
+}

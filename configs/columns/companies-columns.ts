@@ -3,23 +3,26 @@ import { h } from 'vue'
 import type { Company } from '~/types/company'
 import CellActions from '../../components/models/table/CellActions.vue'
 import { getContrastTextColor } from '~/lib/utils'
+import { str } from '~/lib/str'
 
 export const CompaniesColumns: ColumnDef<Company>[] = [
   {
     accessorKey: 'name',
-    header: 'Nom',
+    header: 'attributes.name.name',
   },
   {
     accessorKey: 'industry',
-    header: 'Industrie',
+    header: ({ table }) => table.options.meta?.t
+    ? str(table.options.meta.t('attributes.industry.name')).capitalize().value()
+    : 'Industry',
   },
   {
     accessorKey: 'size',
-    header: 'Taille',
+    header: 'attributes.size.name',
   },
   {
     accessorKey: 'assignedTo',
-    header: 'Assigné à',
+    header: 'attributes.assigned_to.name',
     cell: ({ row }) => {
       const assignedTo = row.original.assignedTo
       return h('span', assignedTo?.firstName + ' ' + assignedTo?.lastName)
@@ -27,11 +30,11 @@ export const CompaniesColumns: ColumnDef<Company>[] = [
   },
   {
     accessorKey: 'globalRevenue',
-    header: 'Revenu',
+    header: 'attributes.globalRevenue.name',
   },
   {
     accessorKey: 'status',
-    header: 'Statut',
+    header: 'attributes.status.name',
     cell: ({ row }: any) => {
       const status = row.original.status.name
       const color = row.original.status.color || '#888888'
@@ -50,8 +53,6 @@ export const CompaniesColumns: ColumnDef<Company>[] = [
     id: 'actions',
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original
-
       return h('div', { class: 'relative' }, h(CellActions, {
         model: 'companies',
         id: row.original.id,

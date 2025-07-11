@@ -14,3 +14,7 @@ export function getContrastTextColor(bgColor: string): string {
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
   return luminance > 0.5 ? 'text-black' : 'text-white'
 }
+
+export function joinArticle(article: string, word: string) {
+  return article === "l'" ? `${article}${word}` : `${article} ${word}`
+}

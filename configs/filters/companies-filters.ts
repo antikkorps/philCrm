@@ -51,7 +51,7 @@ export const companiesFilters = [
     {
         name: 'assignedToId',
         type: 'select',
-        label: 'Assigné à',
+        label: 'attributes.assigned_to.name',
         getOptions: async () => {
             const me = await apiFetch(API_ROUTES.auth.me) as Me;
             const response = await apiFetch(API_ROUTES.models.tenants.userByTenant(me.tenantId)) as UserResource
@@ -66,7 +66,7 @@ export const companiesFilters = [
     {
         name: 'statusId',
         type: 'select',
-        label: 'Statut',
+        label: 'attributes.status.name',
         getOptions: async () => {
             const response = await apiFetch(API_ROUTES.models.status.index({ limit: -1 })) as StatusResource
             const statuses = response.items
@@ -76,17 +76,6 @@ export const companiesFilters = [
             }))
         }
     },
-    // {
-    //     name: 'category',
-    //     type: 'select',
-    //     label: 'Catégorie',
-    //     options: [
-    //         { value: 'tech', label: 'Technologie' },
-    //         { value: 'finance', label: 'Finance' },
-    //         { value: 'healthcare', label: 'Santé' },
-    //         { value: 'education', label: 'Éducation' }
-    //     ]
-    // },
     {
         name: 'created_at',
         type: 'date',
@@ -100,7 +89,7 @@ export const companiesFilters = [
         min: 0,
         max: 500000000,
         step: 1000,
-        label: 'Revenu global',
+        label: 'attributes.globalRevenue.name',
         devise: '€'
     },
 ]

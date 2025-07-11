@@ -37,6 +37,7 @@
     "zod": "^3.25.71"
   },
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vue-i18n": "^11.1.9"
   }
 }
