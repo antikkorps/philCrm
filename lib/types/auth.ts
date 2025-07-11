@@ -1,6 +1,9 @@
+import type { PaginationType } from "~/types/pagination"
+
 export interface User {
   id: string
-  name: string
+  lastName: string
+  firstName: string
   email: string
   avatar?: string
   createdAt: string
@@ -30,4 +33,40 @@ export interface AuthState {
   isAuthenticated: boolean
   isLoading: boolean
   error: string | null
+}
+
+
+export interface Me extends User {
+  avatarUrl: string | null
+  bio: string | null
+  isActive: boolean
+  isSuperAdmin: boolean
+  jobTitle: string | null
+  lastLoginAt: string
+  phone: string | null
+  role: Role
+  roleId: string
+  tenantId: string
+}
+
+export interface Role {
+  id: string
+  name: string
+  permissions: Record<string, boolean>
+  tenantId: string
+  createdAt: string
+  updatedAt: string
+  }
+
+export interface Tenant {
+  id: string
+  name: string
+  domain: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface UserResource {
+  items: User[]
+  pagination: PaginationType
 }
