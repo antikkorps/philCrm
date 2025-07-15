@@ -9,7 +9,7 @@ export default {
   companies: {
     [CrudActionsEnums.Create]: () => import('@/components/models/companies/CompanyForm.vue'),
     [CrudActionsEnums.Edit]: () => import('@/components/models/companies/CompanyForm.vue'),
-    [CrudActionsEnums.Show]: () => import('@/components/models/companies/CompanyForm.vue'),
+    [CrudActionsEnums.Show]: () => import('@/components/models/companies/CompanyShow.vue'),
   },
   contacts: {
     [CrudActionsEnums.Create]: () => import('@/components/models/contacts/ContactForm.vue'),

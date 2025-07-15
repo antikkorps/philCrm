@@ -4,7 +4,7 @@ import { defineAsyncComponent } from 'vue'
 import models from '~/configs/models'
 import TitleSection from '~/components/ui/TitleSection.vue'
 import { CrudActionsEnums, GlobalActionsEnums } from '~/enums/actions'
-import { API_ROUTES } from '~/configs/routes'
+import { API_ROUTES } from '~/configs/api_routes'
 
 definePageMeta({ layout: 'dashboard' })
 const route = useRoute()

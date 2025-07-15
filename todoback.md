@@ -1,0 +1,1 @@
+La gestion de suppression de company a un problème de relation

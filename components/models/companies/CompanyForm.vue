@@ -236,7 +236,7 @@ import PhilInput from '~/components/forms/PhilInput.vue'
 import type { Company } from '~/types/company';
 import { z } from 'zod'
 import Button from '~/components/ui/button/Button.vue';
-import { API_ROUTES } from '~/configs/routes';
+import { API_ROUTES } from '~/configs/api_routes';
 import { apiFetch } from '~/utils/api';
 import type { Status, StatusResource } from '~/types/status';
 import type { Me, User, UserResource } from '~/lib/types/auth';

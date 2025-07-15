@@ -1,6 +1,6 @@
 import type { Status, StatusResource } from "~/types/status"
-import { API_ROUTES } from "../routes"
 import type { Me, User, UserResource } from "~/lib/types/auth";
+import { API_ROUTES } from "../api_routes";
 
 export const companiesFilters = [
     {

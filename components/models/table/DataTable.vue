@@ -23,7 +23,7 @@ const { t } = useI18n()
 const props = defineProps<{
   columns: ColumnDef<TData, TValue>[]
   data: TData[],
-  pagination: PaginationType | null
+  pagination?: PaginationType | null
 }>()
 
 const table = useVueTable({
@@ -35,9 +35,9 @@ const table = useVueTable({
 </script>
 
 <template>
-  <div>
-    <div class="border rounded-md">
-      <Table>
+  <div class="min-w-max overflow-x-auto">
+    <div class="border rounded-md min-w-max">
+      <Table class="min-w-max table-auto">
         <TableHeader>
           <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
             <TableHead v-for="header in headerGroup.headers" :key="header.id">

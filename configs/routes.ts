@@ -32,6 +32,12 @@ export const ROUTES = {
             [CrudActionsEnums.Create]: `${DASHBOARD_BASE}/contacts/${CRUD.create}`,
             [CrudActionsEnums.Show]: (id: string | number) => `${DASHBOARD_BASE}/contacts/${id}`,
             [CrudActionsEnums.Edit]: (id: string | number) => `${DASHBOARD_BASE}/contacts/${CRUD.edit}/${id}`
+        },
+        activities: {
+            [CrudActionsEnums.Index]: `${DASHBOARD_BASE}/activities/${CRUD.index}`,
+            [CrudActionsEnums.Create]: `${DASHBOARD_BASE}/activities/${CRUD.create}`,
+            [CrudActionsEnums.Show]: (id: string | number) => `${DASHBOARD_BASE}/activities/${id}`,
+            [CrudActionsEnums.Edit]: (id: string | number) => `${DASHBOARD_BASE}/activities/${CRUD.edit}/${id}`  
         }
     },
 
@@ -40,69 +46,6 @@ export const ROUTES = {
 
 
 
-const API_BASE = "/api";
-const apiModels: Record<string, any> = {};
-const COMPLETE_CRUD_MODELS = ['companies', 'contacts', 'statuses'] as const;
-/**
- * Make complete crud routes for a given model
- * @param model - The model to make complete crud routes for
- * @returns The complete crud routes for the given model
- */
-function makeCompleteCrudRoutes(model: string) {
-    return {
-        [CrudActionsEnums.Index]: (params?: Record<string, any>) => {
-            if (!params) return `${API_BASE}/${model}`;
-            const searchParams = new URLSearchParams();
-            Object.entries(params).forEach(([key, value]) => {
-                if (value !== undefined && value !== null) {
-                    searchParams.append(key, value.toString());
-                }
-            });
-            return `${API_BASE}/${model}?${searchParams.toString()}`;
-        },
-        [CrudActionsEnums.Create]: `${API_BASE}/${model}`,
-        [CrudActionsEnums.Show]: (id: string | number) => `${API_BASE}/${model}/${id}`,
-        [CrudActionsEnums.Update]: (id: string | number) => `${API_BASE}/${model}/${id}`,
-        [CrudActionsEnums.Delete]: (id: string | number) => `${API_BASE}/${model}/${id}`,
-    };
-}
-COMPLETE_CRUD_MODELS.forEach(model => {
-    apiModels[model] = makeCompleteCrudRoutes(model);
-});
-
-/** Add custom manually routes for api routes */
-apiModels.status = {
-    [CrudActionsEnums.Index]: (params?: Record<string, any>) => {
-        if (!params) return `${API_BASE}/statuses`;
-        const searchParams = new URLSearchParams();
-        Object.entries(params).forEach(([key, value]) => {
-            if (value !== undefined && value !== null) {
-                searchParams.append(key, value.toString());
-            }
-        });
-        return `${API_BASE}/statuses?${searchParams.toString()}`;
-    },
-    [CrudActionsEnums.Show]: (id: string | number) => `${API_BASE}/statuses/${id}`,
-};
-apiModels.tenants = {
-    [CrudActionsEnums.Index]: (params?: Record<string, any>) => {
-        if (!params) return `${API_BASE}/tenants`;
-        const searchParams = new URLSearchParams();
-        Object.entries(params).forEach(([key, value]) => {
-            if (value !== undefined && value !== null) {
-                searchParams.append(key, value.toString());
-            }
-        });
-        return `${API_BASE}/tenants?${searchParams.toString()}`;
-    },
-    userByTenant: (tenantId: string | number) => `${API_BASE}/users/tenant/${tenantId}`,
-};
-export const API_ROUTES = {
-    models: apiModels,
-    auth: {
-        me: `${API_BASE}/auth/me`
-    }
-}
 
 
 

@@ -1,6 +1,7 @@
 import type { User } from "~/lib/types/auth"
 import type { PaginationType } from "./pagination"
 import type { Status } from "./status"
+import type { Contact } from "./contact"
 
 export interface Company {
     id: string
@@ -27,7 +28,20 @@ export interface Company {
     updatedAt: Date
 }
 
+// extend Company for CompanyShow
+export interface CompanyShow extends Company {
+    Contacts: Contact[]
+    Specialities: Speciality[]
+}
 export interface CompanyResource {
     items: Company[],
     pagination: PaginationType
+}
+
+
+export interface Speciality {
+    id: string;
+    name: string;
+    createdAt: string; 
+    updatedAt: string;
 }

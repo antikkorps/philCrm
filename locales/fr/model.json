@@ -5,6 +5,9 @@
         },
         "contacts": {
             "name": "contact | contacts"
+        },
+        "activities": {
+            "name": "tâche | tâches"
         }
     }
 }

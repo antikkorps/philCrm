@@ -36,7 +36,7 @@ import 'vue-sonner/style.css'
           </Breadcrumb>
         </div>
       </header>
-      <main class="container mx-auto flex flex-1 flex-col gap-4 p-4 pt-12">
+      <main class="container mx-auto p-4 pt-12">
         <slot />
       </main>
     </SidebarInset>

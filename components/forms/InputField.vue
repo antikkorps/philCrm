@@ -62,7 +62,7 @@ const inputBaseTypesSupported: InputType[] = [
     v-else-if="field.inputType === inputTypes.select" v-model="modelValue">
         <SelectTrigger 
         :disabled="field.disabled"
-        :class="cn('w-full mt-2', group?.error && 'border-red-500')">
+        :class="cn('w-full mt-2', field.class, group?.error && 'border-red-500')">
             <SelectValue :placeholder="field.placeholder || 'Sélectionner...'" />
         </SelectTrigger>
         <SelectContent>

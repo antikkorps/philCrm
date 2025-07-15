@@ -99,6 +99,18 @@
         "complete_name": {
             "name": "nom complet",
             "placeholder": "nom complet {of} {article} {model}"
+        },
+        "title": {
+            "name": "titre",
+            "placeholder": "titre {of} {article} {model}"
+        },
+        "dueDate": {
+            "name": "date butoire",
+            "placeholder": "date butoire {of} {article} {model}"
+        },
+        "priority": {
+            "name": "niveau de priorité",
+            "placeholder": "niveau de priorité {of} {article} {model}"
         }
     }
 }

@@ -21,6 +21,7 @@ export type InputType = (typeof inputTypes)[keyof typeof inputTypes];
 export interface Field {
     data: any;
     setData?: (key: string, value: any) => void;
+    class?: string;
     inputType: InputType;
     loading?: boolean;
     disabled?: boolean;

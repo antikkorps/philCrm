@@ -2,7 +2,7 @@
 import { EyeIcon, MoreHorizontal, PencilIcon, TrashIcon } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { API_ROUTES } from '~/configs/routes';
+import { API_ROUTES } from '~/configs/api_routes';
 import { getDashboardEdit, getDashboardShow } from '~/utils/dashboardModelRoutes';
 import AlertModal from '~/components/ui/AlertModal.vue';
 import { toast } from 'vue-sonner';
