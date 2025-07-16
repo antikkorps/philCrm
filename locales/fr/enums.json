@@ -1,0 +1,24 @@
+{
+    "enums": {
+        "activities": {
+          "type": {
+            "CALL": "appel",
+            "MEETING": "rendez-vous",
+            "TASK": "tâche",
+            "EMAIL": "email",
+            "NOTE": "note"
+          },
+          "priority": {
+            "LOW": "bas",
+            "MEDIUM": "moyen",
+            "HIGH": "haut"
+          },
+          "taskStatus": {
+            "PENDING": "en attente",
+            "IN_PROGRESS": "en cours",
+            "COMPLETED": "terminé",
+            "CANCELLED": "annulé"
+          }
+        }
+    }
+}

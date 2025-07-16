@@ -13,6 +13,7 @@ import CellActions from '../../table/CellActions.vue';
 import DataTable from '../../table/DataTable.vue';
 import {Button} from "@/components/ui/button"
 import { Plus } from 'lucide-vue-next';
+import { str } from '~/lib/str';
 
 defineProps<{
     modelValue?: CompanyShow | null
@@ -60,7 +61,7 @@ const createHref = computed(() => getDashboardCreate('contacts'))
 <template>
     <Card>
         <CardHeader class="flex items-center justify-between">
-            <CardTitle>Contacts</CardTitle>
+            <CardTitle>{{ str($t('company.contacts.title')).capitalize().value() }}</CardTitle>
             <Button size="sm" as-child>
             <NuxtLink :title="$t('global.action.create')" :href="createHref">
                 <Plus class="size-4" />

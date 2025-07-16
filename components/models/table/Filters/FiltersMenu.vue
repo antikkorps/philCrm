@@ -18,6 +18,8 @@ import CheckboxFilter from './CheckboxFilter.vue';
 import DualSlider from '~/components/ui/DualSlider.vue';
 import { Button } from '@/components/ui/button'
 import { str } from '~/lib/str'
+import { useI18n } from 'vue-i18n';
+import MultiSelectFilter from './MultiSelectFilter.vue';
 
 const props = defineProps<{
   model: string
@@ -29,7 +31,7 @@ const filters = ref<Array<{
   devise?: string
   minName?: string
   maxName?: string
-  type: 'text' | 'select' | 'date' | 'range' | 'checkbox'
+  type: 'text' | 'select' | 'date' | 'range' | 'checkbox' | 'multiselect'
   options?: Array<{ value: string, label: string }>
   min?: number
   max?: number
@@ -46,7 +48,7 @@ const dateValues = ref<Record<string, string>>({})
 const isOpen = ref(false)
 
 onMounted(async () => {
-  filters.value = await resolveFilters(props.model)
+  filters.value = await resolveFilters(props.model, {t: useI18n().t})
 })
 
 const dualSliderRefs: { [key: string]: any } = {}
@@ -167,11 +169,11 @@ const nonDualSliderCount = computed(() =>
         <div class="md:grid md:grid-cols-2 md:gap-4 space-y-4">
           <SearchInput v-for="filter in filters.filter(f => f.type === 'text' && f.name)" :key="filter.name"
             :search-field="filter.name" :label="filter.label"
-            :modelValue="(searchValues.value && searchValues.value[filter.name as string]) || ''"
+            :modelValue="(searchValues.value && searchValues.value[filter.name as any]) || ''"
             @update:modelValue="(val: string) => updateSearchValue(filter.name, val)" />
         </div>
 
-        <div v-if="nonDualSliderCount >= 2" class="h-px bg-input my-4"></div>
+        <!-- <div v-if="nonDualSliderCount >= 2" class="h-px bg-input my-4"></div> -->
         <!-- Filtres de type select -->
         <SelectFilter
           v-for="filter in filters.filter(f => f.type === 'select' && f.name)"
@@ -179,7 +181,17 @@ const nonDualSliderCount = computed(() =>
           :search-field="filter.name"
           :label="filter.label"
           :options="filter.options"
-          :modelValue="(selectValues.value && selectValues.value[filter.name as string]) || ''"
+          :modelValue="(selectValues.value && selectValues.value[filter.name as any]) || ''"
+          @update:modelValue="val => updateSelectValue(filter.name, val)"
+        />
+
+        <MultiSelectFilter
+          v-for="filter in filters.filter(f => f.type === 'multiselect' && f.name)"
+          :key="filter.name"
+          :search-field="filter.name"
+          :label="filter.label"
+          :options="filter.options"
+          :modelValue="(selectValues.value && selectValues.value[filter.name as any]) || ''"
           @update:modelValue="val => updateSelectValue(filter.name, val)"
         />
 

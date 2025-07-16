@@ -111,6 +111,14 @@
         "priority": {
             "name": "niveau de priorité",
             "placeholder": "niveau de priorité {of} {article} {model}"
+        },
+        "type": {
+            "name": "type",
+            "placeholder": "type {of} {article} {model}"
+        },
+        "progress": {
+            "name": "progression",
+            "placeholder": "progression {of} {article} {model}"
         }
     }
 }

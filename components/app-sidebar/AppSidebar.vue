@@ -86,6 +86,25 @@ const items = {
           isVisible: true
         }
       ]
+    },
+    {
+      title: str(t('sidebar.activities')).capitalize().value(),
+      url: "#",
+      icon: Building,
+      isActive: route.path.startsWith(ROUTES.dashboard.activities.index),
+      isVisible: true,
+      items: [
+        {
+          title: str(t('sidebar.list')).capitalize().value(),
+          url: ROUTES.dashboard.activities.index,
+          isVisible: true
+        },
+        {
+          title: str(t('sidebar.create')).capitalize().value(),
+          url: ROUTES.dashboard.activities.create,
+          isVisible: true
+        }
+      ]
     }
   ]
 };

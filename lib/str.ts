@@ -30,6 +30,11 @@ class StringHelper {
         return this;
     }
 
+    uppercase(): this {
+        this.text = this.text.toUpperCase();
+        return this;
+    }
+
     value(): string {
         return this.text;
     }

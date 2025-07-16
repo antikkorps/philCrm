@@ -19,7 +19,7 @@ export interface Contact {
     updatedAt: string
 }
 
-export interface CompanyResource {
+export interface ContactResource {
     items: Contact[],
     pagination: PaginationType
 }

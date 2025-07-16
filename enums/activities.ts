@@ -5,7 +5,7 @@ export enum TaskStatus {
     CANCELLED = 'CANCELLED'
 }
 
-export enum Priority {
+export enum ActivityPriority {
     LOW = 'LOW',
     MEDIUM = 'MEDIUM',
     HIGH = 'HIGH'
@@ -35,13 +35,13 @@ export function getTaskStatusColor(status: TaskStatus) {
     }
 }
 
-export function getPriorityColor(priority: Priority) {
+export function getPriorityColor(priority: ActivityPriority) {
     switch (priority) {
-        case Priority.LOW:
+        case ActivityPriority.LOW:
             return 'green'
-        case Priority.MEDIUM:
+        case ActivityPriority.MEDIUM:
             return 'blue'
-        case Priority.HIGH:
+        case ActivityPriority.HIGH:
             return 'red'
         default:
             return '#000'

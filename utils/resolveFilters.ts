@@ -1,4 +1,4 @@
-export const resolveFilters = async (model: string) => {
+export const resolveFilters = async (model: string, context?: any) => {
     try {
       const configFileName = `${model}-filters`
       const configModule = await import(`~/configs/filters/${configFileName}.ts`)
@@ -16,7 +16,7 @@ export const resolveFilters = async (model: string) => {
           // Si le filtre a une fonction getOptions, l'exécuter
           if (filter.getOptions && typeof filter.getOptions === 'function') {
             try {
-              options = await filter.getOptions()
+              options = await filter.getOptions(context)
             } catch (error) {
               console.error(`Erreur lors du chargement des options pour ${filter.name}:`, error)
               options = []

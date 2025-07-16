@@ -4,6 +4,7 @@ export async function resolveColumns(model: string) {
     const key = `${model.charAt(0).toUpperCase()}${model.slice(1)}Columns`;
     return module[key] || []
   } catch (e) {
+    // console.log('erreur', e)
     return []
   }
 } 

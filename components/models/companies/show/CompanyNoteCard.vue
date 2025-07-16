@@ -15,7 +15,9 @@ import type { Activity } from '~/types/activity';
 import { API_ROUTES } from '~/configs/api_routes';
 import { cn, getContrastTextColor } from '~/lib/utils';
 import { useDateFormat } from '~/composables/useDateFormat'
-import { ActivityType, getPriorityColor, getTaskStatusColor, Priority, TaskStatus } from '~/enums/activities';
+import { getPriorityColor, getTaskStatusColor, ActivityPriority, TaskStatus } from '~/enums/activities';
+import { str } from '~/lib/str';
+import { useI18n } from 'vue-i18n';
 
 const { formatDate } = useDateFormat()
 defineProps<{
@@ -31,6 +33,7 @@ const columns: ColumnDef<Activity>[] = [
         accessorKey: 'taskStatus',
         header: 'attributes.status.name',
         cell: ({ row }) => {
+            const { t } = useI18n()
             const status = row.original.taskStatus;
             if (!status) return;
             const color = getTaskStatusColor(status as TaskStatus);
@@ -45,7 +48,7 @@ const columns: ColumnDef<Activity>[] = [
                     ),
                     style: `background-color: ${color};`,
                 },
-                { default: () => status }
+                { default: () => str(t('enums.activities.taskStatus.' + status)).capitalize().value() }
             );
         }
     },
@@ -59,7 +62,7 @@ const columns: ColumnDef<Activity>[] = [
         header: 'attributes.priority.name',
         cell: ({ row }) => {
             const priority = row.original.priority;
-            const color = getPriorityColor(priority as Priority);
+            const color = getPriorityColor(priority as ActivityPriority);
             const textClass = getContrastTextColor(color);
             return h('span',
                 {
@@ -96,7 +99,7 @@ const createHref = computed(() => getDashboardCreate('activities'))
 <template>
     <Card>
         <CardHeader class="flex items-center justify-between">
-            <CardTitle>Tasks</CardTitle>
+            <CardTitle>{{ str($t('company.notes.title', 2)).capitalize().value() }}</CardTitle>
             <Button size="sm" as-child>
                 <NuxtLink :title="$t('global.action.create')" :href="createHref">
                     <Plus class="size-4" />

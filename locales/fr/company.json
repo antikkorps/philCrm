@@ -1,0 +1,27 @@
+{
+    "company": {
+        "details": {
+            "title": "détails"
+        },
+        "website": "site web",
+        "assignedTo": "assigné à",
+        "specialities": "spécialités",
+        "address": "adresse",
+        "contacts": {
+            "title": "contacts"
+        },
+        "tasks": {
+            "title": "tâche | tâches",
+            "myTasks": "mes tâches",
+            "allTasks": "toutes les tâches"
+        },
+        "notes": {
+            "title": "note | notes"
+        },
+        "activities": {
+            "title": "activité | activités",
+            "manageAll": "gérer toutes vos activités",
+            "count_activities": "{count} activité | {count} activités"
+        }
+    }
+}

@@ -28,7 +28,8 @@
             "close_model": "Fermer",
             "open_menu": "Ouvrir le menu",
             "apply_filters": "Appliquer les filtres",
-            "reset_filters": "Réinitialiser les filtres"
+            "reset_filters": "Réinitialiser les filtres",
+            "quickAdd": "ajout rapide"
         },
         "pagination": {
             "previous": "Précédent",

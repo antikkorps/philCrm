@@ -34,14 +34,11 @@ const fetchData = async (page: number = 1, searchParams?: Record<string, string>
       })
     }
 // FIXME: le type doit être générique dans la mesure du possible
-    const dataResources: CompanyResource = await apiFetch(url)
+    const dataResources: any = await apiFetch(url)
     data.value = dataResources.items;
-    console.log(url)
-    console.log(data.value)
     pagination.value = dataResources.pagination;
-    console.log(pagination.value)
   } catch (e) {
-    console.error('Erreur lors du fetch du model:', e)
+    // console.error('Erreur lors du fetch du model:', e)
   }
 }
 
@@ -90,7 +87,6 @@ onMounted(async () => {
       await fetchData(pageFromUrl, searchParams)
     })()
   ])
-
   columns.value = columnsData
 })
 </script>

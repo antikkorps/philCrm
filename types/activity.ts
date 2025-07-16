@@ -1,14 +1,15 @@
 import type { User } from "~/lib/types/auth"
 import type { PaginationType } from "./pagination"
+import type { ActivityPriority, ActivityType, TaskStatus } from "~/enums/activities"
 
 export interface Activity {
     id: string
-    type: string // "CALL", "MEETING", "TASK", "EMAIL", "NOTE", etc.
+    type: ActivityType
     title: string
     content?: string | null
 
     // Dates importantes
-    startTime?: string | null // ou Date si tu utilises Date côté front
+    startTime?: string | null
     endTime?: string | null
     dueDate?: string | null
 
@@ -22,8 +23,8 @@ export interface Activity {
     attendees?: string | null
 
     // Champs spécifiques TASK
-    priority?: string | null // "LOW" | "MEDIUM" | "HIGH"
-    taskStatus?: string | null // "PENDING" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED"
+    priority?: ActivityPriority | null
+    taskStatus?: TaskStatus | null
     progress?: number | null // 0-100
 
     // Champs spécifiques EMAIL
